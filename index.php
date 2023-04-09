@@ -1,379 +1,167 @@
 <?php
 
-//To Handle Session Variables on This Page
 session_start();
 
+if (isset($_SESSION['id_admin'])) {
+  header("Location: dashboard.php");
+  exit();
+}
 
-//Including Database Connection From db.php file to avoid rewriting in all files
-require_once("db.php");
 ?>
 <!DOCTYPE html>
-<html lang="en">
-<title>Home</title>
+<html>
 
 <head>
-    <?php
 
-    include 'php/head.php'
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Placement Portal</title>
+  <link href="../img/logo.png" rel="icon">
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.7 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../css/AdminLTE.min.css">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/iCheck/1.0.2/skins/square/blue.css">
 
-    ?>
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
 
+  <script src="https://cdn.tailwindcss.com"></script>
 
+  <!-- Google Font -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 
-<body>
-
-    <!-- header starts -->
-    <?php
-
-    include 'php/header.php'
-
-    ?>
-    <!-- header ends -->
-
-    <section id="hero-animated" class="hero-animated d-flex align-items-center">
-        <div class="container d-flex flex-column justify-content-center align-items-center text-center position-relative" data-aos="zoom-out">
-            <img src="assets/img/hero-carousel/hero-carousel-1.svg" class="img-fluid animated">
-            <h2>Welcome to <span>Placement Cell</span></h2>
-            <p>We Will Support You In Your Entire Placement Journey.</p>
-            <div class="d-flex">
-                <a href="login.php" class="btn-get-started scrollto">Get Started</a>
-
-            </div>
-        </div>
-    </section>
-
-    <main id="main">
-
-        <!-- ======= Featured Services Section ======= -->
-        <section id="featured-services" class="featured-services">
-            <div class="container">
-
-                <div class="row gy-4">
-
-                    <div class="col-xl-3 col-md-6 d-flex" data-aos="zoom-out">
-                        <div class="service-item position-relative">
-                            <div class="icon"><i class="bi bi-activity icon"></i></div>
-                            <h4><a href="" class="stretched-link">Login</a></h4>
-                            <p>Students can login using their credentials. </p>
-                        </div>
-                    </div>
-
-                    <div class="col-xl-3 col-md-6 d-flex" data-aos="zoom-out" data-aos-delay="200">
-                        <div class="service-item position-relative">
-                            <div class="icon"><i class="bi bi-bounding-box-circles icon"></i></div>
-                            <h4><a href="" class="stretched-link">Register</a></h4>
-                            <p>Register yourself here.</p>
-                        </div>
-                    </div>
-
-        <div class="col-xl-3 col-md-6 d-flex" data-aos="zoom-out" data-aos-delay="400">
-            <div class="service-item position-relative">
-                <div class="icon"><i class="bi bi-calendar4-week icon"></i></div>
-                <h4><a href="" class="stretched-link">Look for companies</a></h4>
-                <p>You can search for companies.</p>
-            </div>
-        </div>
-
-        <div class="col-xl-3 col-md-6 d-flex" data-aos="zoom-out" data-aos-delay="600">
-            <div class="service-item position-relative">
-                <div class="icon"><i class="bi bi-broadcast icon"></i></div>
-                <h4><a href="" class="stretched-link">Apply for Drives</a></h4>
-                <p>Look for eligibilty criteria and apply for companies accordingly.</p>
-            </div>
-        </div>
-        <!-- End Service Item -->
-
-        </div>
-
-        </div>
-        </section><!-- End Featured Services Section -->
+<body class="hold-transition login-page bg-gray-800 text-white">
 
 
+  <?php
+  include '../uploads/admin_header.php';
+  ?>
 
+  <div class="login-box " id="sms">
 
-        <!-- ======= Call To Action Section ======= -->
-        <section id="cta" class="cta">
-            <div class="container" data-aos="zoom-out">
-
-                <div class="row g-5">
-
-                    <div class="col-lg-8 col-md-6 content d-flex flex-column justify-content-center order-last order-md-first">
-                        <h3>Placement <em>Portal</em> </h3>
-                        <p>The Placement Cell plays a crucial role in locating job
-                            opportunities for under graduates and post graduates passing out from the college by
-                            keeping in touch with reputed firms and industrial establishments.
-                            <br>The placement cell operates round the year to facilitate contacts between companies
-                            and graduates. The number of students placed through the campus interviews is
-                            continuously rising.
-                        </p>
-                        <a class="cta-btn align-self-start" href="#">Get Started</a>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 order-first order-md-last d-flex align-items-center">
-                        <div class="img">
-                            <img src="assets/img/feature-7.jpg" alt="" class="img-fluid">
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-        </section><!-- End Call To Action Section -->
-
-
-        <!-- ======= Clients Section ======= -->
-        <section id="clients" class="clients">
-            <div class="container" data-aos="zoom-out">
-
-                <div class="clients-slider swiper">
-                    <div class="swiper-wrapper align-items-center">
-                        <div class="swiper-slide"><img src="assets/img/clients/client-1.svg" class="img-fluid" alt=""></div>
-                        <div class="swiper-slide"><img src="assets/img/clients/client-2.png" class="img-fluid" alt=""></div>
-                        <div class="swiper-slide"><img src="assets/img/clients/client-3.png" class="img-fluid" alt=""></div>
-                        <div class="swiper-slide"><img src="assets/img/clients/client-4.png" class="img-fluid" alt=""></div>
-                        <div class="swiper-slide"><img src="assets/img/clients/client-5.png" class="img-fluid" alt=""></div>
-                        <div class="swiper-slide"><img src="assets/img/clients/client-6.png" class="img-fluid" alt=""></div>
-                        <div class="swiper-slide"><img src="assets/img/clients/client-7.png" class="img-fluid" alt=""></div>
-                        <div class="swiper-slide"><img src="assets/img/clients/client-8.png" class="img-fluid" alt=""></div>
-                    </div>
-                </div>
-
-            </div>
-        </section><!-- End Clients Section -->
-
-
-
-        <!-- ======= Features Section ======= -->
-        <section id="objectives" class="features" name="objectives">
-            <div class="container" data-aos="fade-up">
-
-
-
-                <div class="tab-content">
-
-                    <div class="tab-pane active show" id="tab-1">
-                        <div class="row gy-4">
-                            <div class="col-lg-8 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="100">
-                                <h3>Objectives</h3>
-                                <p class="fst-itali">
-                                    Our Placement Portal serves various objectives:
-                                </p>
-                                <ul>
-                                    <li><i class="bi bi-check-circle-fill"></i> Developing the students to meet the Industries recruitment process.
-                                    </li>
-                                    <li><i class="bi bi-check-circle-fill"></i> To motivate students to develop Technical knowledge and soft skills in
-                                        terms of career planning, goal setting.
-                                    </li>
-                                    <li><i class="bi bi-check-circle-fill"></i> To produce world-class professionals who have excellent analytical skills,
-                                        communication skills, team building spirit and ability to work in cross cultural
-                                        environment.</li>
-
-                                </ul>
-                            </div>
-                            <div class="col-lg-4 order-1 order-lg-2 text-center" data-aos="fade-up" data-aos-delay="200">
-                                <img src="assets/img/features-1.svg" alt="" class="img-fluid">
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Tab Content -->
-
-
-
-
-
-                    <section id="statistics" class="content-header">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-12 text-center latest-job margin-bottom-20">
-                                    <h1>Our Statistics</h1>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-3 col-xs-6">
-                                    <!-- small box -->
-                                    <div class="small-box bg-aqua">
-                                        <div class="inner">
-                                            <?php
-                                            $sql = "SELECT * FROM job_post";
-                                            $result = $conn->query($sql);
-                                            if ($result->num_rows > 0) {
-                                                $totalno = $result->num_rows;
-                                            } else {
-                                                $totalno = 0;
-                                            }
-                                            ?>
-                                            <h3>
-                                                <?php echo $totalno; ?>
-                                            </h3>
-
-                                            <p>Total Drives</p>
-                                        </div>
-                                        <div class="icon">
-                                            <i class="ion ion-ios-paper"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- ./col -->
-                                <div class="col-lg-3 col-xs-6">
-                                    <!-- small box -->
-                                    <div class="small-box bg-green">
-                                        <div class="inner">
-                                            <?php
-                                            $sql = "SELECT * FROM company WHERE active='1'";
-                                            $result = $conn->query($sql);
-                                            if ($result->num_rows > 0) {
-                                                $totalno = $result->num_rows;
-                                            } else {
-                                                $totalno = 0;
-                                            }
-                                            ?>
-                                            <h3>
-                                                <?php echo $totalno; ?>
-                                            </h3>
-
-                                            <p>Job Offers</p>
-                                        </div>
-                                        <div class="icon">
-                                            <i class="ion ion-briefcase"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- ./col -->
-                                <div class="col-lg-3 col-xs-6">
-                                    <!-- small box -->
-                                    <div class="small-box bg-yellow">
-                                        <div class="inner">
-                                            <?php
-                                            $sql = "SELECT * FROM users WHERE resume!=''";
-                                            $result = $conn->query($sql);
-                                            if ($result->num_rows > 0) {
-                                                $totalno = $result->num_rows;
-                                            } else {
-                                                $totalno = 0;
-                                            }
-                                            ?>
-                                            <h3>
-                                                <?php echo $totalno; ?>
-                                            </h3>
-
-                                            <p>CV'S/Resume</p>
-                                        </div>
-                                        <div class="icon">
-                                            <i class="ion ion-ios-list"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- ./col -->
-                                <div class="col-lg-3 col-xs-6">
-                                    <!-- small box -->
-                                    <div class="small-box bg-red">
-                                        <div class="inner">
-                                            <?php
-                                            $sql = "SELECT * FROM users WHERE active='1'";
-                                            $result = $conn->query($sql);
-                                            if ($result->num_rows > 0) {
-                                                $totalno = $result->num_rows;
-                                            } else {
-                                                $totalno = 0;
-                                            }
-                                            ?>
-                                            <h3>
-                                                <?php echo $totalno; ?>
-                                            </h3>
-
-                                            <p>Daily Users</p>
-                                        </div>
-                                        <div class="icon">
-                                            <i class="ion ion-person-stalker"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- ./col -->
-                            </div>
-                        </div>
-                    </section>
-                    <!-- ======= F.A.Q Section ======= -->
-
-
-    </main><!-- End #main -->
-
-    <!-- ======= Footer ======= -->
-
-    <?php
-
-    include 'php/footer.php';
-    ?>
-
-    <!-- End Footer -->
-
-    <!-- TPO bot -->
-
-    <a href="javascript:" id="return-to-top"><i class="icon-chevron-up"></i></a>
-
-    <button class="open-button is-size-5" onclick="openForm()" style="color:#6900FF !important;"><strong><i class="fas fa-comment-alt"></i> Chat</strong></button>
-
-    <div class="chat-popup" id="myForm">
-        <form class="form-container">
-            <iframe style="border: none;border-radius: 5px;" width="280" height="390" allow="microphone;" src="https://console.dialogflow.com/api-client/demo/embedded/7dec0910-2f92-4902-849c-5c6f90718781">
-            </iframe>
-
-            <button type="button" class="button cancel is-fullwidth" style="background-color: rgba(105, 0, 255, 0.11);color:#6900FF;" onclick="closeForm()"><strong>Close</strong></button>
-        </form>
+    <div class="login-logo text-white">
+      <a style="color:white" href="../index.php">Placement Portal</a>
     </div>
-
-    </div>
-
-    <!-- JS FILES -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js'></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
-    <script src="{% static 'js/tabs.js' %}"></script>
-    <style>
-
-    </style>
-    <script>
-        // ===== Scroll to Top ==== 
-        $(window).scroll(function() {
-            if ($(this).scrollTop() >= 50) { // If page is scrolled more than 50px
-                $('#return-to-top').fadeIn(200); // Fade in the arrow
-            } else {
-                $('#return-to-top').fadeOut(200); // Else fade out the arrow
-            }
-        });
-        $('#return-to-top').click(function() { // When arrow is clicked
-            $('body,html').animate({
-                scrollTop: 0 // Scroll to top of body
-            }, 500);
-        });
-
-        function openForm() {
-            document.getElementById("myForm").style.display = "block";
+    <!-- /.login-logo -->
+    <div class="bg-gray-900 text-white login-box-body large">
+      <p class="login-box-msg mt-7">Admin Login</p>
+      <style>
+        .large {
+          width: 350px;
+          height: 300px;
         }
 
-        function closeForm() {
-            document.getElementById("myForm").style.display = "none";
+        .small {
+          font-size: small;
         }
-        $("#button").click(function() {
-            $('html, body').animate({
-                scrollTop: $("#about").offset().top
-            }, 1000);
-        });
-        $("#button1").click(function() {
-            $('html, body').animate({
-                scrollTop: $("#events").offset().top
-            }, 1000);
-        });
-    </script>
-    <script src="assets/js/main1.js"></script>
-    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-    <script src="assets/js/counter.js"></script>
+
+        #footer {
+          position: absolute;
+          bottom: 0;
+          width: 100%;
+          height: 60px;
+          /* Height of the footer */
+
+        }
+
+
+        @media only screen and (max-width: 768px) {
+          .large {
+            margin: auto;
+
+          }
+
+          .small {
+
+            position: absolute;
+          }
+      </style>
+
+      <form action="checklogin.php" method="post">
+        <div class="form-group has-feedback">
+          <input type="text" class="form-control" name="username" placeholder="Username">
+          <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        </div>
+        <div class="form-group has-feedback">
+          <input type="password" class="form-control" name="password" placeholder="Password">
+          <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        </div>
+        <div class="row">
+          <!-- /.col -->
+          <div class="col-xs-4">
+            <button type="submit" class="btn btn-primary btn-block btn-flat" class=" transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300">Sign In</button>
+          </div>
+          <!-- /.col -->
+        </div>
+        <?php
+        //If User Failed To log in then show error message.
+        if (isset($_SESSION['loginError'])) {
+        ?>
+          <div>
+            <p class="text-center">Invalid Email/Password! Try Again!</p>
+          </div>
+        <?php
+          unset($_SESSION['loginError']);
+        }
+        ?>
+
+      </form>
+    </div>
+    <!-- /.login-box-body -->
+  </div>
 
 
 
-    <!-- tpo bot ends -->
+  <div style="margin: bottom 0px; " class="  sm:mt-48 ">
+    <footer id="footer" class="text-gray-600 body-font bg-gray-800 border-t-2 border-gray-700 small mb-0 ">
+
+      <div class="pt-1 pb-2">
+        <ul class="flex  space-x-16 justify-center text-white my-4 ">
+
+          <li><i class="fa fa-copyright" aria-hidden="true"></i>Placement Portal @ 2022</li>
+          <li><i class="fa fa-facebook" aria-hidden="true"></i></li>
+          <li><i class="fa fa-twitter" aria-hidden="true"></i></li>
+          <li><i class="fa fa-instagram" aria-hidden="true"></i></li>
+          <li><i class="fa fa-linkedin" aria-hidden="true"></i></li>
+
+        </ul>
 
 
+
+
+
+      </div>
+
+
+    </footer>
+
+
+
+  </div>
+  <!-- /.login-box -->
+
+
+  <!-- jQuery 3 -->
+  <script src=" https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- Bootstrap 3.3.7 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="../js/adminlte.min.js"></script>
+  <!-- iCheck -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/iCheck/1.0.2/icheck.min.js"></script>
 
 </body>
 
